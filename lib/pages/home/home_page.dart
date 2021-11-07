@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Container(
                           child: Text(
-                            store.tasks[index].createAt.toString(),
+                            '07 Nov',
                             style: TextStyle(fontSize: 12),
                           ),
                         ),
