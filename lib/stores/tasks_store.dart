@@ -17,4 +17,9 @@ abstract class _TaskStoreBase with Store {
   void removeTask(TaskModel task) {
     tasks.removeWhere((element) => element.id == task.id);
   }
+
+  @action
+  void setTasksList(List<TaskModel> tasksList) {
+    tasks = tasksList.asObservable();
+  }
 }
