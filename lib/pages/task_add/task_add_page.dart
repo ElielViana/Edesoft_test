@@ -14,6 +14,8 @@ class _TaskAddPageState extends State<TaskAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffF2F2F2),
+      // backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           controller.addTask();
@@ -27,7 +29,7 @@ class _TaskAddPageState extends State<TaskAddPage> {
           padding: EdgeInsets.all(15),
           child: TextField(
             controller: controller.taskNameController,
-            decoration: InputDecoration(hintText: 'Nome da tarefa'),
+            decoration: InputDecoration(hintText: 'Nome da tarefa', suffixIcon: Icon(Icons.task),border: OutlineInputBorder()),
           ),
         ),
       ),
