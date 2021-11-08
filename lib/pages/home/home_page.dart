@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:get_it/get_it.dart';
+import 'package:intl/intl.dart';
+import 'package:task_list/pages/home/home_controller.dart';
 import 'package:task_list/pages/task_add/task_add_page.dart';
 import 'package:task_list/stores/tasks_store.dart';
+import 'package:task_list/utils/date_time_utils.dart';
 
 class HomePage extends StatefulWidget {
   static const String routeName = '/HomePage';
@@ -12,7 +15,16 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Size screen;
+  final controller = GetIt.I.get<HomeController>();
+
   final store = GetIt.I.get<TasksStore>();
+
+  @override
+  void initState() {
+    controller.getAllTask();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     screen = MediaQuery.of(context).size;
@@ -72,7 +84,8 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         Container(
                           child: Text(
-                            '07 Nov',
+                            DateTimeUtils.getDateString(
+                                store.tasks[index].createAt),
                             style: TextStyle(fontSize: 12),
                           ),
                         ),
